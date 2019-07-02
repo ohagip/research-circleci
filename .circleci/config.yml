@@ -10,17 +10,17 @@ jobs: # ジョブという単位で構成、デフォルトでbuildという名�
       # - run: でシェルコマンドを実行
       - checkout # Gitリポジトリからソースをチェックアウト
       - restore_cache:
-          key: npm-cache-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: npm-cache-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
       - run: npm ci
       - save_cache: # ブランチ名と`package-lock.json`のハッシュをキーとしてキャッシュ
-          key: npm-cache-v2-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: npm-cache-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - ~/.npm # npm ci の場合node_modules/以下は一度削除されるのでこっちをキャッシュ
       - run: npm run test:unit
       - run: npm run build
       - run: echo "run deploy script"
 
-#workflows: ジョブを並行して実行できる、
+#workflows: ジョブを並行して実行することで高速化できる、ただし有料でコンテナを増やす必要がある
 #  app:
 #    jobs:
 #      - test
