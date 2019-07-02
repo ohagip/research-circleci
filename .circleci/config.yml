@@ -11,6 +11,5 @@ jobs: # ジョブという単位で構成、デフォルトでbuildという名�
       - run: echo "hello world"
       - checkout # Gitリポジトリからソースをチェックアウト
       - run: npm ci
-      - run: npm run lint
       - run: npm run test:unit
       - run: npm run build
