@@ -1,0 +1,7 @@
+version: 2.1 # CircleCIのバージョン
+jobs: # デフォルトでbuildという名前のジョブが実行される
+  build: # 実行環境や実行されるステップで構成
+    docker:
+      - image: circleci/node:10
+    steps: # 実行するコマンド
+      - run: echo "hello world"
