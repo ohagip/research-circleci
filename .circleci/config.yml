@@ -3,9 +3,9 @@ jobs: # ジョブという単位で構成、デフォルトでbuildという名�
   build: # 実行環境や実行されるステップで構成
     docker:
       - image: circleci/node:10
-          # デフォルトでUTC、タイムゾーンを意識しない場合は不要
-          environment:
-            TZ: Asia/Tokyo
+        # デフォルトでUTC、タイムゾーンを意識しない場合は不要
+        environment:
+          TZ: Asia/Tokyo
     steps: # 実行するコマンド、上から順に実行される
       # - run: でシェルコマンドを実行
       - run: echo "hello world"
